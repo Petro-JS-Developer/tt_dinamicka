@@ -15,35 +15,36 @@ export const CreateTodo = () => {
     dispatch(addTodo({
       id: uuidv4(),
       title: inputValue,
+      completed: false,
     }));
     setInputValue('');
   };
 
   return (
-    <>
+    <div className="text-center">
       <h1>Add new task</h1>
       <Form>
         <Form.Row className="align-items-center">
           <Col sm={6} className="my-1">
             <Form.Control type="text" placeholder="Input task" value={inputValue} onChange={(event) => setInputValue(event.target.value)} />
           </Col>
-          <Col sm={4} className="my-1">
-            <Button
-              variant="primary"
-              type="submit"
-              onClick={(e) => {
-                e.preventDefault();
-                addNewTodo();
-              }}
-            >
-              Add
-            </Button>
-          </Col>
+
+          <Button
+            variant="primary"
+            type="submit"
+            onClick={(e) => {
+              e.preventDefault();
+              addNewTodo();
+            }}
+          >
+            Add todo
+          </Button>
+
         </Form.Row>
       </Form>
 
       <TodoList />
-    </>
+    </div>
 
   );
 };
